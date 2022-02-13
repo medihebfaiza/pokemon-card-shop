@@ -14,11 +14,13 @@ import { CartItem } from 'src/app/models/cartItem'
 export class CartComponent implements OnInit {
 
   cart$: Observable<CartItem[]>
+  total: number = 0
 
   getMarketPrice = getMarketPrice
 
   constructor(private store: Store<AppState>) {
     this.cart$ = store.select('cart')
+    this.cart$.subscribe(cart => this.total = this.calculateCartTotal(cart))
   }
 
   ngOnInit(): void {
@@ -34,6 +36,10 @@ export class CartComponent implements OnInit {
 
   removeCard(id: string): void {
     this.store.dispatch(removeCardFromCart({id}))
+  }
+
+  calculateCartTotal(cart: CartItem[]): number{
+    return cart.reduce((total, item) => getMarketPrice(item.card)*item.quantity + total, 0)
   }
 
 }

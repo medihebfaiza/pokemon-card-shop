@@ -1,4 +1,4 @@
-<h1>Cart</h1>
+<h1>🛒Cart</h1>
 <div class="cart-item" *ngFor="let item of cart$ | async">
     <span> {{item.card.name}} </span>
     <span> {{getMarketPrice(item.card)}} €</span>
@@ -7,3 +7,5 @@
     <button (click)="decrementQuant(item.card.id)"> - </button>
     <button (click)="removeCard(item.card.id)"> Remove </button>
 </div>
+<hr>
+<h2>Total : {{total}} €</h2>

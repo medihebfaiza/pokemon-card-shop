@@ -26,7 +26,7 @@ export class Card implements PokemonTCG.Card {
     }
 }
 
-export function getMarketPrice(card : Card): number | null | undefined{
+export function getMarketPrice(card : Card): number{
     return card.tcgplayer?.prices?.normal?.market 
         || card.tcgplayer?.prices?.holofoil?.market 
         || card.tcgplayer?.prices?.reverseHolofoil?.market 
