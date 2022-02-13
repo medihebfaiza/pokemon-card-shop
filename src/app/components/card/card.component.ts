@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { AppState } from 'src/app/models/app.state'
 import { loadCard } from '../../store/actions/card.actions'
+import { addCardToCart } from '../../store/actions/cart.actions'
 import { Card } from 'src/app/models/card'
 
 @Component({
@@ -29,6 +30,10 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  addToCart(){
+    this.card$.subscribe(card => this.store.dispatch(addCardToCart({card})))
   }
 
 }

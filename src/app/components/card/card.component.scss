@@ -1,0 +1,17 @@
+.card-details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-image{
+    padding: 10px;
+    img {
+        width: 400px;
+    }
+}
+
+.card-description {
+    width: 400;
+    padding: 10px;
+}
