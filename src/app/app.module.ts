@@ -1,12 +1,21 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CartComponent } from './cart/cart.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { CardComponent } from './card/card.component';
+import { BrowserModule } from '@angular/platform-browser'
+import { AppRoutingModule } from './app-routing.module'
+import { StoreModule } from '@ngrx/store'
+import { EffectsModule } from '@ngrx/effects'
 
+import { AppComponent } from './app.component'
+import { CatalogComponent } from './components/catalog/catalog.component'
+import { CardComponent } from './components/card/card.component'
+import { CartComponent } from './components/cart/cart.component'
+
+import { catalogReducer } from './store/reducers/catalog.reducer'
+import { cardReducer } from './store/reducers/card.reducer'
+import { cartReducer } from './store/reducers/cart.reducer'
+
+import { CatalogEffects } from './store/effects/catalog.effects'
+import { CardEffects } from './store/effects/card.effects'
 
 @NgModule({
   declarations: [
@@ -17,7 +26,13 @@ import { CardComponent } from './card/card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({
+      catalog : catalogReducer,
+      cart: cartReducer,
+      card: cardReducer
+    }),
+    EffectsModule.forRoot([CatalogEffects, CardEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

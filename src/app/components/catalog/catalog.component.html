@@ -1,0 +1,31 @@
+<h1 class="catalog-title">Catalogue</h1>
+
+<input type="text" (keyup)="onKey($event)">
+<button (click)="search()">Search</button>
+
+<div *ngIf="loading$ | async">
+  <div class="loader">Loading...</div>
+</div>
+
+<div *ngIf="!(loading$ | async)"class="catalog-items">
+  <div class="card" *ngFor="let card of cards$ | async">
+    <div class="card-inner">
+      <div class="card-front">
+        <img class="card-image" src={{card.images.large}}>
+      </div>
+      <div class="card-back">
+        <div class="card-description">
+          <h2>{{card.name}}</h2>
+          <span class="card-price">
+              {{getMarketPrice(card)}} €
+            </span>
+        </div>
+        <div class="card-actions">
+            <button type="button" id="ViewDetails"  routerLink="/card/{{card.id}}"> ℹ View details</button><!--<a [href]="{{'./card/'+card.id}}"></a>-->
+            <!--<button type="button" id="AddFavorites" (click)="addToFavorites(card.id)">❤ Add to Favorites</button>-->
+            <button type="button" id="AddCart" (click)="addToCart(card)">🛒 Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
