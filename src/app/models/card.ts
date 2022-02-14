@@ -25,10 +25,3 @@ export class Card implements PokemonTCG.Card {
         this.tcgplayer = card.tcgplayer
     }
 }
-
-export function getMarketPrice(card : Card): number{
-    return card.tcgplayer?.prices?.normal?.market 
-        || card.tcgplayer?.prices?.holofoil?.market 
-        || card.tcgplayer?.prices?.reverseHolofoil?.market 
-        || 0
-}
