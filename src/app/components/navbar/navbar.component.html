@@ -1,0 +1,7 @@
+<div class="toolbar" role="banner">
+    <a routerLink="/">Pokémon Card Shop</a>
+    <div class="spacer"></div>
+    <a routerLink="/catalog">Catalogue</a>
+    <a routerLink="/collection">Collection</a>
+    <a routerLink="/cart">Cart <span *ngIf="count">({{count}} / {{total}} €)</span></a>
+</div>

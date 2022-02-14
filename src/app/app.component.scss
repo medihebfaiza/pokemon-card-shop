@@ -7,35 +7,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.spacer {
-  flex: 1;
-}
-
-.toolbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  background-color: #1976d2;
-  color: white;
-  font-weight: 600;
-}
-
-.toolbar img {
-  margin: 0 16px;
-}
-
-/*  .toolbar #twitter-logo:hover,
-.toolbar #youtube-logo:hover {
-  opacity: 0.8;
-}*/
-
 .content {
   display: flex;
+  min-height: calc(100vh - 200px);
   margin: 82px auto 32px;
   padding: 0 16px;
   flex-direction: column;
@@ -60,4 +34,5 @@ footer {
   flex-direction: row;
   justify-content: center;
   line-height: 20px;
+  color: #888;
 }
