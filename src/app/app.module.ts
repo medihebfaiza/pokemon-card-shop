@@ -15,14 +15,20 @@ import { cardReducer } from './store/reducers/card.reducer'
 import { cartReducer } from './store/reducers/cart.reducer'
 
 import { CatalogEffects } from './store/effects/catalog.effects'
-import { CardEffects } from './store/effects/card.effects'
+import { CardEffects } from './store/effects/card.effects';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { CollectionComponent } from './components/collection/collection.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
     CatalogComponent,
-    CardComponent
+    CardComponent,
+    NavbarComponent,
+    HomeComponent,
+    CollectionComponent
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { AppState } from 'src/app/models/app.state'
-import { Card, getMarketPrice } from '../../models/card'
+import { Card } from '../../models/card'
 import { loadCatalog } from '../../store/actions/catalog.actions'
 import { addCardToCart } from '../../store/actions/cart.actions'
 import { cardsSelector, loadingSelector } from '../../store/selectors/catalog.selector'
+import { getCardMarketPrice } from '../../utils'
 
 @Component({
   selector: 'app-catalog',
@@ -17,7 +18,7 @@ export class CatalogComponent implements OnInit {
   loading$: Observable<boolean>
   cards$: Observable<Card[]>
   keyword: string = ''
-  getMarketPrice = getMarketPrice
+  getCardMarketPrice = getCardMarketPrice
 
   
   constructor(private store: Store<AppState>) {

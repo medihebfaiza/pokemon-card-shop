@@ -1,7 +1,7 @@
 <h1>🛒Cart</h1>
 <div class="cart-item" *ngFor="let item of cart$ | async">
     <span> {{item.card.name}} </span>
-    <span> {{getMarketPrice(item.card)}} €</span>
+    <span> {{getCardMarketPrice(item.card)}} €</span>
     <button (click)="incrementQuant(item.card.id)"> + </button>
     <span> {{item.quantity}} </span>
     <button (click)="decrementQuant(item.card.id)"> - </button>

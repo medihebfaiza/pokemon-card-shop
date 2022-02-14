@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core'
-import { Store, select } from '@ngrx/store'
-import { Observable, reduce } from 'rxjs'
-import { Card, getMarketPrice } from '../../models/card'
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
 import { AppState } from 'src/app/models/app.state'
 import { incrementQuantInCart, decrementQuantInCart, removeCardFromCart } from 'src/app/store/actions/cart.actions'
 import { CartItem } from 'src/app/models/cartItem'
+import { getCardMarketPrice } from '../../utils'
+import { calculateCartTotal } from '../../utils'
 
 @Component({
   selector: 'app-cart',
@@ -16,11 +17,11 @@ export class CartComponent implements OnInit {
   cart$: Observable<CartItem[]>
   total: number = 0
 
-  getMarketPrice = getMarketPrice
+  getCardMarketPrice = getCardMarketPrice
 
   constructor(private store: Store<AppState>) {
     this.cart$ = store.select('cart')
-    this.cart$.subscribe(cart => this.total = this.calculateCartTotal(cart))
+    this.cart$.subscribe(cart => this.total = calculateCartTotal(cart))
   }
 
   ngOnInit(): void {
@@ -36,10 +37,6 @@ export class CartComponent implements OnInit {
 
   removeCard(id: string): void {
     this.store.dispatch(removeCardFromCart({id}))
-  }
-
-  calculateCartTotal(cart: CartItem[]): number{
-    return cart.reduce((total, item) => getMarketPrice(item.card)*item.quantity + total, 0)
   }
 
 }
