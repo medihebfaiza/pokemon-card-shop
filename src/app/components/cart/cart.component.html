@@ -2,9 +2,9 @@
 <div class="cart-item" *ngFor="let item of cart$ | async">
     <span> {{item.card.name}} </span>
     <span> {{getCardMarketPrice(item.card)}} €</span>
-    <button (click)="incrementQuant(item.card.id)"> + </button>
+    <button (click)="incrementQuant(item.card.id)" class="quantity-button"> + </button>
     <span> {{item.quantity}} </span>
-    <button (click)="decrementQuant(item.card.id)"> - </button>
+    <button (click)="decrementQuant(item.card.id)" class="quantity-button"> - </button>
     <button (click)="removeCard(item.card.id)"> Remove </button>
 </div>
 <hr>
