@@ -6,5 +6,5 @@ export interface AppState {
     card: Card,
     catalog: Catalog,
     cart: CartItem[],
-    loading: boolean
+    collection: Card[]
 }

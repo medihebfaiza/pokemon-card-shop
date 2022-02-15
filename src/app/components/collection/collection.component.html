@@ -1,1 +1,23 @@
-<p>collection works!</p>
+<h1 class="catalog-title">📚 Collection</h1>
+
+<div class="catalog-items">
+  <div class="card" *ngFor="let card of cards$ | async">
+    <div class="card-inner">
+      <div class="card-front">
+        <img class="card-image" src={{card.images.large}}>
+      </div>
+      <div class="card-back">
+        <div class="card-description">
+          <h2>{{card.name}}</h2>
+          <span class="card-price">
+              {{getCardMarketPrice(card)}} €
+            </span>
+        </div>
+        <div class="card-actions">
+            <button type="button" routerLink="/card/{{card.id}}">🎴 View details</button>
+            <button type="button" (click)="addToCart(card)">🛒 Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

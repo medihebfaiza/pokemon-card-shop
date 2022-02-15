@@ -5,6 +5,7 @@ import { AppState } from 'src/app/models/app.state'
 import { Card } from '../../models/card'
 import { loadCatalog } from '../../store/actions/catalog.actions'
 import { addCardToCart } from '../../store/actions/cart.actions'
+import { addCardToCollection } from 'src/app/store/actions/collection.actions'
 import { cardsSelector, loadingSelector } from '../../store/selectors/catalog.selector'
 import { getCardMarketPrice } from '../../utils'
 
@@ -38,7 +39,9 @@ export class CatalogComponent implements OnInit {
     }
   }
 
-  addToFavorites(id: string)  {}
+  addToFavorites(card: Card)  {
+    this.store.dispatch(addCardToCollection({card}))
+  }
 
   addToCart(card: Card){
     this.store.dispatch(addCardToCart({card}))

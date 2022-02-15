@@ -38,3 +38,91 @@ input[type=text] {
   padding: 10px;
   box-sizing: border-box;
 }
+
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.card {
+  margin: 10px 10px 0 0;
+  background-color: transparent;
+  width: 200px;
+  height: 287px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  //transition: transform .2s; /* Zoom Animation */
+}
+
+.card:hover {
+  //transform: scale(1.1); /* (110% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+/* This container is needed to position the front and back side */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.card-front, .card-back {
+  position: absolute;
+  width: 200px;
+  height: 287px;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.card-front {
+  color: black;
+}
+
+.card-image {
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 10px;
+}
+
+/* Style the back side */
+.card-back {
+  background-color: #1976d2;
+  color: white;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+}
+
+.card-description {
+  text-align: center;
+  height: 130px;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  button {
+      width: 180px;
+      background-color: white;
+      border: none;
+      border-radius: 10px;
+      color: #1976d2;
+      padding: 10px 32px;
+      margin-bottom: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      align-self: center;
+      cursor: pointer;
+  }
+}

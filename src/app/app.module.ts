@@ -13,6 +13,7 @@ import { CartComponent } from './components/cart/cart.component'
 import { catalogReducer } from './store/reducers/catalog.reducer'
 import { cardReducer } from './store/reducers/card.reducer'
 import { cartReducer } from './store/reducers/cart.reducer'
+import { collectionReducer } from './store/reducers/collection.reducer'
 
 import { CatalogEffects } from './store/effects/catalog.effects'
 import { CardEffects } from './store/effects/card.effects';
@@ -35,6 +36,7 @@ import { CollectionComponent } from './components/collection/collection.componen
     AppRoutingModule,
     StoreModule.forRoot({
       catalog : catalogReducer,
+      collection: collectionReducer,
       cart: cartReducer,
       card: cardReducer
     }),
