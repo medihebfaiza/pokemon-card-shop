@@ -1,11 +1,19 @@
-<h1>🛒Cart</h1>
-<div class="cart-item" *ngFor="let item of cart$ | async">
-    <span> {{item.card.name}} </span>
-    <span> {{getCardMarketPrice(item.card)}} €</span>
-    <button (click)="incrementQuant(item.card.id)" class="quantity-button"> + </button>
-    <span> {{item.quantity}} </span>
-    <button (click)="decrementQuant(item.card.id)" class="quantity-button"> - </button>
-    <button (click)="removeCard(item.card.id)"> Remove </button>
+<div class="cart">
+    <h1>🛒Cart</h1>
+    <div class="cart-item" *ngFor="let item of cart$ | async">
+        <div class="cart-item-name"> 
+            {{item.card.name}} 
+        </div>
+        <div class="cart-item-quantity">
+            <button (click)="incrementQuant(item.card.id)" class="quantity-button"> + </button>
+            <span>{{item.quantity}}</span>
+            <button (click)="decrementQuant(item.card.id)" class="quantity-button"> - </button>
+        </div>
+        <div class="cart-item-price"> 
+            {{getCardMarketPrice(item.card)*item.quantity}} €
+        </div>
+        <button (click)="removeCard(item.card.id)"> Remove </button>
+    </div>
+    <hr>
+    <h2>Total : {{total}} €</h2>
 </div>
-<hr>
-<h2>Total : {{total}} €</h2>
