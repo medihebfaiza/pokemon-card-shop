@@ -1,9 +1,9 @@
 <h1 class="catalog-title">📚 Collection</h1>
 
-<div class="catalog-items">
+<div class="cards">
   <div class="card" *ngFor="let card of cards$ | async">
     <div class="card-inner">
-      <div class="card-front">
+      <div [ngClass]="{'card-front': true, 'shiny': cardIsRareHolo(card)}">
         <img class="card-image" src={{card.images.large}}>
       </div>
       <div class="card-back">
@@ -15,6 +15,7 @@
         </div>
         <div class="card-actions">
             <button type="button" routerLink="/card/{{card.id}}">🎴 View details</button>
+            <button type="button" (click)="removeFromCollection(card.id)">📚 Remove</button>
             <button type="button" (click)="addToCart(card)">🛒 Add to Cart</button>
         </div>
       </div>

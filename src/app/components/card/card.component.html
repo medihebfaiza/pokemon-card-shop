@@ -1,6 +1,6 @@
 <div class="card-details">
     <div class="card-image">
-        <img src="{{(card$| async)?.images?.large}}">
+        <img [ngClass]="{'shiny': isRareHolo}" src="{{(card$| async)?.images?.large}}">
     </div>
     <div class="card-description">
         <h1>{{(card$| async)?.name}}</h1>
@@ -8,14 +8,17 @@
         <h2>Subtypes :</h2>
         <p>{{(card$| async)?.subtypes}}</p>
         <h2>Set :</h2>
-        <p>{{(card$| async)?.set}}</p>
+        <p>{{(card$| async)?.set?.name}}</p>
         <h2>Number :</h2>
         <p>{{(card$| async)?.number}}</p>
         <h2>Rarity :</h2>
         <p>{{(card$| async)?.rarity}}</p>
-        <h2>Legalities :</h2>
-        <p>{{(card$| async)?.legalities}}</p>
+
         <h2>Price</h2>
-        <button (click)="addToCart()">🛒 Add to Cart</button>
+        <p>{{price}} €</p>
+        <div>
+            <button (click)="addToCollection()">📚 Add to Collection</button>
+            <button (click)="addToCart()">🛒 Add to Cart</button>
+        </div>
     </div>
 </div>

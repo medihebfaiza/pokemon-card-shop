@@ -7,7 +7,7 @@ import { loadCatalog } from '../../store/actions/catalog.actions'
 import { addCardToCart } from '../../store/actions/cart.actions'
 import { addCardToCollection } from 'src/app/store/actions/collection.actions'
 import { cardsSelector, loadingSelector } from '../../store/selectors/catalog.selector'
-import { getCardMarketPrice } from '../../utils'
+import { getCardMarketPrice, cardIsRareHolo } from '../../utils'
 
 @Component({
   selector: 'app-catalog',
@@ -20,6 +20,7 @@ export class CatalogComponent implements OnInit {
   cards$: Observable<Card[]>
   keyword: string = ''
   getCardMarketPrice = getCardMarketPrice
+  cardIsRareHolo = cardIsRareHolo
 
   
   constructor(private store: Store<AppState>) {
@@ -39,7 +40,7 @@ export class CatalogComponent implements OnInit {
     }
   }
 
-  addToFavorites(card: Card)  {
+  addToCollection(card: Card)  {
     this.store.dispatch(addCardToCollection({card}))
   }
 

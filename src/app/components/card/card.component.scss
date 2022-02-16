@@ -6,12 +6,23 @@
 
 .card-image{
     padding: 10px;
+    width: 400px;
     img {
         width: 400px;
     }
 }
 
 .card-description {
-    width: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 400px;
+    height: 550px;
     padding: 10px;
+}
+
+button {
+    margin: 10px 10px 0 0;
+    margin-left: 0;
+    margin-right: 10px;
 }

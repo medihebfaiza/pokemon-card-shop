@@ -7,10 +7,10 @@
   <div class="loader">Loading...</div>
 </div>
 
-<div *ngIf="!(loading$ | async)"class="cards">
+<div *ngIf="!(loading$ | async)" class="cards">
   <div class="card" *ngFor="let card of cards$ | async">
     <div class="card-inner">
-      <div class="card-front">
+      <div [ngClass]="{'card-front': true, 'shiny': cardIsRareHolo(card)}">
         <img class="card-image" src={{card.images.large}}>
       </div>
       <div class="card-back">
@@ -22,7 +22,7 @@
         </div>
         <div class="card-actions">
             <button type="button" routerLink="/card/{{card.id}}">🎴 View details</button>
-            <button type="button" (click)="addToFavorites(card)">📚 Add to Collection</button>
+            <button type="button" (click)="addToCollection(card)">📚 Add to Collection</button>
             <button type="button" (click)="addToCart(card)">🛒 Add to Cart</button>
         </div>
       </div>

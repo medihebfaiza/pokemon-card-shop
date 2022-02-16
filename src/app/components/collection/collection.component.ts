@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { Card } from '../../models/card'
 import { AppState } from 'src/app/models/app.state'
-import { getCardMarketPrice } from '../../utils'
+import { cardIsRareHolo, getCardMarketPrice } from '../../utils'
 import { addCardToCart } from '../../store/actions/cart.actions'
+import { removeCardFromCollection } from '../../store/actions/collection.actions'
 
 @Component({
   selector: 'app-collection',
@@ -15,6 +16,7 @@ export class CollectionComponent implements OnInit {
 
   cards$: Observable<Card[]>
   getCardMarketPrice = getCardMarketPrice
+  cardIsRareHolo = cardIsRareHolo
 
   constructor(private store: Store<AppState>) { 
     this.cards$ = this.store.select('collection')
@@ -25,6 +27,10 @@ export class CollectionComponent implements OnInit {
 
   addToCart(card: Card){
     this.store.dispatch(addCardToCart({card}))
+  }
+
+  removeFromCollection(id: string){
+    this.store.dispatch(removeCardFromCollection({id}))
   }
 
 }
