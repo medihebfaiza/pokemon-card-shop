@@ -1,5 +1,8 @@
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 
+/**
+ * Card Class implementing the PokemonTCG.Card Interface.
+ */
 export class Card implements PokemonTCG.Card {
     id: string
     name: string
