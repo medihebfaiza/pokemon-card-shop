@@ -5,3 +5,4 @@ export const addCardToCart = createAction('[Cart Component] Add Card to Cart', p
 export const incrementQuantInCart = createAction('[Cart Component] Increment Card quantity in Cart', props<{id : string}>())
 export const decrementQuantInCart = createAction('[Cart Component] Decrement Card quantity in Cart', props<{id : string}>())
 export const removeCardFromCart = createAction('[Cart Component] Remove Card from Cart', props<{id : string}>())
+export const emptyCardFromCart = createAction('[Cart Component] Empty Cart')

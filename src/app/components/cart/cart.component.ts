@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { AppState } from 'src/app/models/app.state'
-import { incrementQuantInCart, decrementQuantInCart, removeCardFromCart } from 'src/app/store/actions/cart.actions'
+import { incrementQuantInCart, decrementQuantInCart, removeCardFromCart, emptyCardFromCart } from 'src/app/store/actions/cart.actions'
 import { CartItem } from 'src/app/models/cartItem'
 import { getCardMarketPrice } from '../../utils'
 import { calculateCartTotal } from '../../utils'
@@ -37,6 +37,10 @@ export class CartComponent implements OnInit {
 
   removeCard(id: string): void {
     this.store.dispatch(removeCardFromCart({id}))
+  }
+
+  emptyCart(): void {
+    this.store.dispatch(emptyCardFromCart())
   }
 
 }
